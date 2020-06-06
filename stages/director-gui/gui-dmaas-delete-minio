@@ -1,0 +1,56 @@
+#!/bin/bash
+
+
+pod() {
+
+## Running gui-dashboard test
+echo -e "\n************************ Running GUI test ***********************************\n"
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/gui-dmaas-delete-minio node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"' '"'$DOP_URL'"''
+}
+
+node() {
+path=$(pwd)
+# Copy kubeconfig
+export KUBECONFIG=~/.kube/cluster2_config
+
+####################################
+##   Prerequisites GUI Automation ##
+####################################
+
+URL=$3
+echo -e "\nDOP URL: $URL\n"
+
+CI_PROJECT_NAME=$(echo $1)
+CI_PIPELINE_ID=$(echo $2)
+GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
+
+####################################
+##  Sequencing and Running test   ##
+####################################
+bash utils/pooling jobname:tcid-dir-dmaas-schd-cstor-minio-bucket
+bash utils/e2e-cr jobname:tcid-dir-dmaas-minio-delete jobphase:Running
+
+CI_PROJECT_NAME=$(echo $CI_PROJECT_NAME)
+CI_PIPELINE_ID=$(echo $CI_PIPELINE_ID)
+GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
+
+#make empty directory
+mkdir -p selenium-auto
+cd selenium-auto
+
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
+cd gui-automation
+
+bash scripts/dop-gui-stages/run-gui-tests.sh ${GROUP} ${GUID} ${URL} ${THREADS} eu-west-2
+
+cd ../..
+bash utils/e2e-cr jobname:tcid-dir-dmaas-minio-delete jobphase:Completed
+
+}
+
+if [ "$1" == "node" ];then
+  node $2 $3 $4
+else
+  pod
+fi
