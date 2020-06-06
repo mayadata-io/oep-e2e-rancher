@@ -165,13 +165,14 @@ TCID-OPENEBS-POLICIES-CREATE:
 .gui_test_template:
   when: always
   image: mayadataio/tools:gitlab-job-v6
-  stage: DIRECTOR-GU
+  stage: DIRECTOR-GUI
   dependencies:
     - TCID-DIR-INSTALL-ON-LOCAL-HP
   script:
     - chmod 755 ./stages/director-gui/run-gui-tests
     - ./stages/director-gui/run-gui-tests
   artifacts:
+    when: always
     paths:
       - /builds/oep/oep-e2e-rancher/gui-automation/results
 

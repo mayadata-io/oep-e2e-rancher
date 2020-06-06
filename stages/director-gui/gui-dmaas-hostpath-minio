@@ -85,7 +85,7 @@ cd gui-automation
 #creating credential file
 cat ~/.dmaas/aws_cred ~/.dmaas/minio_cred >> cred.ini
 
-bash scripts/dop-gui-stages/run-gui-tests.sh ${GROUP} ${GUID} ${URL} ${THREADS} eu-north-1
+bash scripts/dop-gui-stages/run-gui-tests.sh ${GROUP} ${GUID} ${URL} ${THREADS} eu-west-2
 
 cd ../..
 bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-local-hp-minio-bucket jobphase:Completed
