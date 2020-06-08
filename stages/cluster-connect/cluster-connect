@@ -15,6 +15,9 @@ bash utils/e2e-cr jobname:trrc01-cluster-connect jobphase:Running
 # Use cluster2 kube config
 export KUBECONFIG=~/.kube/cluster2_config
 
+echo -e "\n[ Updating cluster name in litmus job ]------------------------------------------------\n"
+sed 's|value: oep-cluster|value: oep-cluster-cluster2|' -i oep-e2e/litmus/director/cluster-connect/run_litmus_test.yml
+
 echo -e "\n[ Connecting the cluster to DOP ]------------------------------------------------------\n"
 kubectl create -f oep-e2e/litmus/director/cluster-connect/run_litmus_test.yml
 
