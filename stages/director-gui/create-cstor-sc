@@ -9,6 +9,7 @@ sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-
 }
 
 node() {
+path=$(pwd)
 export KUBECONFIG=~/.kube/cluster2_config
 ####################################
 ##  Sequencing and Running test   ##

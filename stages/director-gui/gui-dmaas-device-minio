@@ -5,7 +5,7 @@ pod() {
 
 ## Running gui-dashboard test
 echo -e "\n************************ Running GUI test ***********************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/gui-dmaas-device-minio node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"' '"'$DOP_URL'"''
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/gui-dmaas-device-minio node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"' '"'$DOP_URL'"' '"'$GROUP'"' '"'$THREADS'"' '"'$AWS_CREDS'"' '"'$MINIO_CREDS'"''
 }
 
 node() {
@@ -74,11 +74,15 @@ echo -e "\nDOP URL: $URL\n"
 CI_PROJECT_NAME=$(echo $1)
 CI_PIPELINE_ID=$(echo $2)
 GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
+GROUP=$(echo $4)
+THREADS=$(echo $5)
+AWS_CREDS=$(echo $6)
+MINIO_CREDS=$(echo $7)
 
 #copy aws and minio cred
 mkdir -p ~/.dmaas
-cp $AWS_CREDS ~/.dmaas/aws_cred
-cp $MINIO_CREDS ~/.dmaas/minio_cred
+echo "$AWS_CREDS" > ~/.dmaas/aws_cred
+echo "$MINIO_CREDS" > ~/.dmaas/minio_cred
 #make empty directory
 mkdir -p selenium-auto
 cd selenium-auto
@@ -98,7 +102,7 @@ bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-local-dev-minio-buckeT jobphase:Co
 }
 
 if [ "$1" == "node" ];then
-  node $2 $3 $4
+  node $2 $3 $4 $5 $6 $7 $8
 else
   pod
 fi

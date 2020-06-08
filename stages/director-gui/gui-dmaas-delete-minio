@@ -5,7 +5,7 @@ pod() {
 
 ## Running gui-dashboard test
 echo -e "\n************************ Running GUI test ***********************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/gui-dmaas-delete-minio node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"' '"'$DOP_URL'"''
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/gui-dmaas-delete-minio node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"' '"'$DOP_URL'"' '"'$GROUP'"' '"'$THREADS'"''
 }
 
 node() {
@@ -23,16 +23,14 @@ echo -e "\nDOP URL: $URL\n"
 CI_PROJECT_NAME=$(echo $1)
 CI_PIPELINE_ID=$(echo $2)
 GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
+GROUP=$(echo $4)
+THREADS=$(echo $5)
 
 ####################################
 ##  Sequencing and Running test   ##
 ####################################
 bash utils/pooling jobname:tcid-dir-dmaas-schd-cstor-minio-bucket
 bash utils/e2e-cr jobname:tcid-dir-dmaas-minio-delete jobphase:Running
-
-CI_PROJECT_NAME=$(echo $CI_PROJECT_NAME)
-CI_PIPELINE_ID=$(echo $CI_PIPELINE_ID)
-GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
 
 #make empty directory
 mkdir -p selenium-auto
@@ -50,7 +48,7 @@ bash utils/e2e-cr jobname:tcid-dir-dmaas-minio-delete jobphase:Completed
 }
 
 if [ "$1" == "node" ];then
-  node $2 $3 $4
+  node $2 $3 $4 $5 $6
 else
   pod
 fi

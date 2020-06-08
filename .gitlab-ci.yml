@@ -5,8 +5,8 @@ stages:
   - INFRA-SETUP
   - CLUSTER-CONNECT
   - OPENEBS-SETUP
-  - OPENEBS-FUNCTIONAL
-  - OPENEBS-CHAOS
+  # - OPENEBS-FUNCTIONAL
+  # - OPENEBS-CHAOS
   - DIRECTOR-GUI
   - DIRECTOR-GUI-DMAAS
   - CLUSTER-CLEANUP
@@ -344,117 +344,117 @@ TCID-DIR-DMAAS-MINIO-DELETE:
 
 ## OpenEBS Functional Tests
 
-.func_test_template:
-  image: harshshekhar15/gitlab-job:v5
-  stage: OPENEBS-FUNCTIONAL
-  when: always
-  dependencies:
-    - TCID-DIR-OP-INSTALL-OPENEBS
+# .func_test_template:
+#   image: harshshekhar15/gitlab-job:v5
+#   stage: OPENEBS-FUNCTIONAL
+#   when: always
+#   dependencies:
+#     - TCID-DIR-OP-INSTALL-OPENEBS
 
-TCID-JIVA-APP-TARGET-AFFINITY:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/Jiva-App-Target-Affinity/app-target-affinity
-    - ./stages/functional/Jiva-App-Target-Affinity/app-target-affinity
+# TCID-JIVA-APP-TARGET-AFFINITY:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/Jiva-App-Target-Affinity/app-target-affinity
+#     - ./stages/functional/Jiva-App-Target-Affinity/app-target-affinity
 
-TCID-JIVA-SNAPSHOT-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/Jiva-snapshot/jiva-snapshot
-    - ./stages/functional/Jiva-snapshot/jiva-snapshot
+# TCID-JIVA-SNAPSHOT-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/Jiva-snapshot/jiva-snapshot
+#     - ./stages/functional/Jiva-snapshot/jiva-snapshot
 
-TCID-JIVA-VOLUME-SCALEUP:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/Jiva-Volume-Scaleup/jiva-vol-scaleup
-    - ./stages/functional/Jiva-Volume-Scaleup/jiva-vol-scaleup
+# TCID-JIVA-VOLUME-SCALEUP:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/Jiva-Volume-Scaleup/jiva-vol-scaleup
+#     - ./stages/functional/Jiva-Volume-Scaleup/jiva-vol-scaleup
 
-TCID-CSTOR-SNAPSHOT-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/cstor-csi-volume-snapshot/csi-cstor-snapshot
-    - ./stages/functional/cstor-csi-volume-snapshot/csi-cstor-snapshot
+# TCID-CSTOR-SNAPSHOT-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/cstor-csi-volume-snapshot/csi-cstor-snapshot
+#     - ./stages/functional/cstor-csi-volume-snapshot/csi-cstor-snapshot
 
-TCID-CSTOR-CLONE-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/cstor-csi-volume-clone/csi-cstor-clone
-    - ./stages/functional/cstor-csi-volume-clone/csi-cstor-clone
+# TCID-CSTOR-CLONE-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/cstor-csi-volume-clone/csi-cstor-clone
+#     - ./stages/functional/cstor-csi-volume-clone/csi-cstor-clone
 
-TCID-CSTOR-VOLUME-EXT4-RESIZE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/cstor-ext4-volume-resize/csi-volume-resize
-    - ./stages/functional/cstor-ext4-volume-resize/csi-volume-resize
+# TCID-CSTOR-VOLUME-EXT4-RESIZE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/cstor-ext4-volume-resize/csi-volume-resize
+#     - ./stages/functional/cstor-ext4-volume-resize/csi-volume-resize
 
-TCID-CSTOR-VOLUME-XFS-RESIZE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
-    - ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
+# TCID-CSTOR-VOLUME-XFS-RESIZE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
+#     - ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
 
-TCID-LOCALPV-RANDOM-DEVICE-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/local-pv-device/local-pv-device
-    - ./stages/functional/local-pv-device/local-pv-device
+# TCID-LOCALPV-RANDOM-DEVICE-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/local-pv-device/local-pv-device
+#     - ./stages/functional/local-pv-device/local-pv-device
 
-TCID-LOCALPV-SELECTED-DEVICE-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/localpv-provisioning-selected-device/localpv-provisioning-selected-device
-    - ./stages/functional/localpv-provisioning-selected-device/localpv-provisioning-selected-device
+# TCID-LOCALPV-SELECTED-DEVICE-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/localpv-provisioning-selected-device/localpv-provisioning-selected-device
+#     - ./stages/functional/localpv-provisioning-selected-device/localpv-provisioning-selected-device
     
-TCID-LOCALPV-HOSTPATH-CREATE:
-  extends: .func_test_template
-  script:
-    - chmod 755 ./stages/functional/local-pv-hostpath/local-pv-hostpath
-    - ./stages/functional/local-pv-hostpath/local-pv-hostpath
+# TCID-LOCALPV-HOSTPATH-CREATE:
+#   extends: .func_test_template
+#   script:
+#     - chmod 755 ./stages/functional/local-pv-hostpath/local-pv-hostpath
+#     - ./stages/functional/local-pv-hostpath/local-pv-hostpath
 
-# OpenEBS CHAOS Tests JOBS
+# # OpenEBS CHAOS Tests JOBS
 
-.chaos_test_template:
-  image: mayadataio/tools:gitlab-job-v6
-  stage: OPENEBS-CHAOS
-  when: always
-  dependencies:
-    - TCID-DIR-OP-INSTALL-OPENEBS
+# .chaos_test_template:
+#   image: mayadataio/tools:gitlab-job-v6
+#   stage: OPENEBS-CHAOS
+#   when: always
+#   dependencies:
+#     - TCID-DIR-OP-INSTALL-OPENEBS
 
-# TCID-JIVA-BUSYBOX-KILL:
+# # TCID-JIVA-BUSYBOX-KILL:
+# #   extends: .chaos_test_template
+# #   script:
+# #     - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
+# #     - ./stages/chaos/Jiva-App-kill/jiva-app-kill
+
+# TCID-JIVA-MULTIPLE-REPLICAS-FAILURE:
 #   extends: .chaos_test_template
 #   script:
-#     - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
-#     - ./stages/chaos/Jiva-App-kill/jiva-app-kill
+#     - chmod 755 ./stages/chaos/Jiva-revision-counter/jiva-revision-counter
+#     - ./stages/chaos/Jiva-revision-counter/jiva-revision-counter
 
-TCID-JIVA-MULTIPLE-REPLICAS-FAILURE:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-revision-counter/jiva-revision-counter
-    - ./stages/chaos/Jiva-revision-counter/jiva-revision-counter
+# TCID-JIVA-REPLICA-NETWORK-DELAY:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-Replica-Network-Delay/jiva-replica-network-delay
+#     - ./stages/chaos/Jiva-Replica-Network-Delay/jiva-replica-network-delay
 
-TCID-JIVA-REPLICA-NETWORK-DELAY:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-Replica-Network-Delay/jiva-replica-network-delay
-    - ./stages/chaos/Jiva-Replica-Network-Delay/jiva-replica-network-delay
+# TCID-JIVA-CONTROLLER-KILL:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-Controller-kill/jiva-controller-kill
+#     - ./stages/chaos/Jiva-Controller-kill/jiva-controller-kill
 
-TCID-JIVA-CONTROLLER-KILL:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-Controller-kill/jiva-controller-kill
-    - ./stages/chaos/Jiva-Controller-kill/jiva-controller-kill
+# TCID-JIVA-CONTROLLER-NETWORK-DELAY:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-Controller-Network-Delay/ctrl-network-delay
+#     - ./stages/chaos/Jiva-Controller-Network-Delay/ctrl-network-delay
 
-TCID-JIVA-CONTROLLER-NETWORK-DELAY:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-Controller-Network-Delay/ctrl-network-delay
-    - ./stages/chaos/Jiva-Controller-Network-Delay/ctrl-network-delay
-
-TCID-JIVA-REPLICA-NODE-AFFINITY:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
-    - ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
+# TCID-JIVA-REPLICA-NODE-AFFINITY:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
+#     - ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
 
 # TCID-CSTOR-BUSYBOX-APP-KILL:
 #   extends: .chaos_test_template
@@ -462,11 +462,11 @@ TCID-JIVA-REPLICA-NODE-AFFINITY:
 #     - chmod 755 ./stages/chaos/cstor-App-pod-kill/app-kill
 #     - ./stages/chaos/cstor-App-pod-kill/app-kill
 
-TCID-CSTOR-TARGET-KILL:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/cstor-Target-kill/target-kill
-    - ./stages/chaos/cstor-Target-kill/target-kill
+# TCID-CSTOR-TARGET-KILL:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/cstor-Target-kill/target-kill
+#     - ./stages/chaos/cstor-Target-kill/target-kill
 
 ## Selenium Grid Clean up
 selenium-grid-cleanup:

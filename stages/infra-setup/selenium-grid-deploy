@@ -13,6 +13,7 @@ CI_PROJECT_NAME=$(echo $1)
 CI_PIPELINE_ID=$(echo $2)
 GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
 path=$(pwd)
+# AWS_CREDS=$(echo $3)
 
 echo -e "\n[ Cloning gui-automation repo ] ------------------------------------\n"
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
@@ -26,7 +27,7 @@ cd ../../..
 }
 
 if [ "$1" == "node" ];then
-  node $2 $3
+  node $2 $3 $4
 else
   pod
 fi
