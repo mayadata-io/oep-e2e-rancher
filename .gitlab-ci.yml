@@ -420,11 +420,11 @@ TCID-LOCALPV-HOSTPATH-CREATE:
   dependencies:
     - TCID-DIR-OP-INSTALL-OPENEBS
 
-TCID-JIVA-BUSYBOX-KILL:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
-    - ./stages/chaos/Jiva-App-kill/jiva-app-kill
+# TCID-JIVA-BUSYBOX-KILL:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
+#     - ./stages/chaos/Jiva-App-kill/jiva-app-kill
 
 TCID-JIVA-MULTIPLE-REPLICAS-FAILURE:
   extends: .chaos_test_template
@@ -456,11 +456,11 @@ TCID-JIVA-REPLICA-NODE-AFFINITY:
     - chmod 755 ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
     - ./stages/chaos/Jiva-Replica-Node-Affinity/rep-node-affinity
 
-TCID-CSTOR-BUSYBOX-APP-KILL:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/cstor-App-pod-kill/app-kill
-    - ./stages/chaos/cstor-App-pod-kill/app-kill
+# TCID-CSTOR-BUSYBOX-APP-KILL:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/cstor-App-pod-kill/app-kill
+#     - ./stages/chaos/cstor-App-pod-kill/app-kill
 
 TCID-CSTOR-TARGET-KILL:
   extends: .chaos_test_template
