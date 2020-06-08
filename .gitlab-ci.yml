@@ -275,11 +275,11 @@ TCID-LOCALPV-HOSTPATH-CREATE:
   dependencies:
     - TCID-DIR-OP-INSTALL-OPENEBS
 
-TCID-JIVA-BUSYBOX-KILL:
-  extends: .chaos_test_template
-  script:
-    - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
-    - ./stages/chaos/Jiva-App-kill/jiva-app-kill
+# TCID-JIVA-BUSYBOX-KILL:
+#   extends: .chaos_test_template
+#   script:
+#     - chmod 755 ./stages/chaos/Jiva-App-kill/jiva-app-kill
+#     - ./stages/chaos/Jiva-App-kill/jiva-app-kill
 
 TCID-JIVA-MULTIPLE-REPLICAS-FAILURE:
   extends: .chaos_test_template
