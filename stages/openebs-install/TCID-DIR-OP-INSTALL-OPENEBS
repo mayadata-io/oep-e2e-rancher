@@ -71,7 +71,7 @@ fi
 }
 
 if [ "$1" == "node" ];then
-  node
+  node $2 $3 $4
 else
   pod
 fi
