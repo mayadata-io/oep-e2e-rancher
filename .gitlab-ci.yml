@@ -4,29 +4,30 @@ stages:
   - CLUSTER-SETUP
   - INFRA-SETUP
   - CLUSTER-CONNECT
-  - DIRECTOR-GUI
   - OPENEBS-SETUP
   - OPENEBS-FUNCTIONAL
   - OPENEBS-CHAOS
+  - DIRECTOR-GUI
+  - DIRECTOR-GUI-DMAAS
   - CLUSTER-CLEANUP
 
 ## Setup kubernetes cluster using Rancher
 cluster-create:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-SETUP
   script:
     - chmod 755 ./stages/cluster-setup/setup
     - ./stages/cluster-setup/setup
 
 cluster2-create:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-SETUP
   script:
     - chmod 755 ./stages/cluster-setup/cluster2-setup
     - ./stages/cluster-setup/cluster2-setup
 
 cluster3-create:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-SETUP
   script:
     - chmod 755 ./stages/cluster-setup/cluster3-setup
@@ -34,7 +35,7 @@ cluster3-create:
 
 ## Deploy Director On-Prem
 TCID-DIR-INSTALL-ON-LOCAL-HP:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: INFRA-SETUP
   dependencies:
     - cluster-create
@@ -53,7 +54,7 @@ selenium-grid-deploy:
     - ./stages/infra-setup/selenium-grid-deploy
 
 create-api-key:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CONNECT
   dependencies:
     - cluster-create
@@ -62,7 +63,7 @@ create-api-key:
     - ./stages/cluster-connect/create-apikey
 
 cluster-connect:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CONNECT
   dependencies:
     - cluster-create
@@ -71,7 +72,7 @@ cluster-connect:
     - ./stages/cluster-connect/cluster-connect
 
 client-components-check:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CONNECT
   dependencies:
     - cluster-create
@@ -80,7 +81,7 @@ client-components-check:
     - ./stages/cluster-connect/client-components-check
 
 cluster3-connect:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CONNECT
   dependencies:
     - cluster-create
@@ -89,7 +90,7 @@ cluster3-connect:
     - ./stages/cluster-connect/cluster3-connect
 
 client3-components-check:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CONNECT
   dependencies:
     - cluster-create
@@ -98,7 +99,7 @@ client3-components-check:
     - ./stages/cluster-connect/client3-components-check
 
 TCID-DIR-OP-INSTALL-OPENEBS:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -107,7 +108,7 @@ TCID-DIR-OP-INSTALL-OPENEBS:
     - ./stages/openebs-install/TCID-DIR-OP-INSTALL-OPENEBS
 
 TCID-DIR-OP-INSTALL-OPENEBS-CP-ON-SPECIFIC-NODE:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -116,7 +117,7 @@ TCID-DIR-OP-INSTALL-OPENEBS-CP-ON-SPECIFIC-NODE:
     - ./stages/openebs-install/TCID-DIR-OP-INSTALL-OPENEBS-CP-ON-SPECIFIC-NODE
 
 TCID-DIR-OP-INSTALL-OPENEBS-DP-ON-SPECIFIC-NODE:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -125,7 +126,7 @@ TCID-DIR-OP-INSTALL-OPENEBS-DP-ON-SPECIFIC-NODE:
     - ./stages/openebs-install/TCID-DIR-OP-INSTALL-OPENEBS-DP-ON-SPECIFIC-NODE
 
 TCID-DIR-OP-RE-INSTALL-OPENEBS:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -134,7 +135,7 @@ TCID-DIR-OP-RE-INSTALL-OPENEBS:
     - ./stages/openebs-install/TCID-DIR-OP-RE-INSTALL-OPENEBS
 
 TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -143,7 +144,7 @@ TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE:
     - ./stages/openebs-install/TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE
 
 TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-STRIPE:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -224,7 +225,7 @@ TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME:
     - ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME
 
 TCID-OPENEBS-POLICIES-CREATE:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
   dependencies:
     - cluster-create
@@ -233,41 +234,185 @@ TCID-OPENEBS-POLICIES-CREATE:
     - ./stages/openebs-install/openebs-storage-policies
 
 ## GUI Checks
+.gui_test_template:
+  when: always
+  image: mayadataio/tools:gitlab-job-v6
+  stage: DIRECTOR-GUI
+  dependencies:
+    - TCID-DIR-INSTALL-ON-LOCAL-HP
+  script:
+    - chmod 755 ./stages/director-gui/run-gui-tests
+    - ./stages/director-gui/run-gui-tests
+  artifacts:
+    when: always
+    paths:
+      - /builds/oep/oep-e2e-rancher/gui-automation/results
+
 TCID-GUI-AUTH:
-  image: harshshekhar15/gitlab-job:v5
-  stage: DIRECTOR-GUI
-  dependencies:
-    - TCID-DIR-INSTALL-ON-LOCAL-HP
-  script:
-    - chmod 755 ./stages/director-gui/gui-auth
-    - ./stages/director-gui/gui-auth
+  extends: .gui_test_template
+  variables:
+    GROUP: auth
+    THREADS: 10
 
+TCID-DIR-AUTH-LOCAL-ADMIN:
+  extends: .gui_test_template
+  variables:
+    GROUP: localAdminAuth
+    THREADS: 10
+
+TCID-DIR-AUTH-LOCAL-USER:
+  extends: .gui_test_template
+  variables:
+    GROUP: localUserAuth
+    THREADS: 10
+
+TCID-DIR-AUTH-LOCAL-PERF:
+  extends: .gui_test_template
+  variables:
+    GROUP: localPerfAuth
+    THREADS: 10
+ 
 TCID-GUI-CLUSTER:
-  image: harshshekhar15/gitlab-job:v5
-  stage: DIRECTOR-GUI
-  dependencies:
-    - TCID-DIR-INSTALL-ON-LOCAL-HP
-  script:
-    - chmod 755 ./stages/director-gui/gui-cluster
-    - ./stages/director-gui/gui-cluster
-
+  extends: .gui_test_template
+  variables:
+    GROUP: cluster
+    THREADS: 10
+ 
 TCID-GUI-DASHBOARD:
-  image: harshshekhar15/gitlab-job:v5
-  stage: DIRECTOR-GUI
-  dependencies:
-    - TCID-DIR-INSTALL-ON-LOCAL-HP
-  script:
-    - chmod 755 ./stages/director-gui/gui-dashboard
-    - ./stages/director-gui/gui-dashboard
+  extends: .gui_test_template
+  variables:
+    GROUP: dashboard
+    THREADS: 10
 
 TCID-GUI-PROFILE:
-  image: harshshekhar15/gitlab-job:v5
-  stage: DIRECTOR-GUI
-  dependencies:
-    - TCID-DIR-INSTALL-ON-LOCAL-HP
+  extends: .gui_test_template
+  variables:
+    GROUP: profile
+    THREADS: 10
+
+TCID-DIR-TEAMING-USER-INVITE:
+  extends: .gui_test_template
+  variables:
+    GROUP: teamingUserInvite
+    THREADS: 10
+
+TCID-DIR-TEAMING-USER-ROLE-UPDATE:
+  extends: .gui_test_template
+  variables:
+    GROUP: teamingRoleUpdate
+    THREADS: 10
+
+TCID-DIR-TEAMING-USER-ROLE-UPDATE-NEGATIVE:
+  extends: .gui_test_template
+  variables:
+    GROUP: teamingRoleUpdateNegative
+    THREADS: 10
+
+TCID-DIR-GUI-OPENEBS-COMPONENTS-VERSION:
+  extends: .gui_test_template
+  variables:
+    GROUP: openebs
+    THREADS: 10
+
+## GUI DMAAS TESTS
+.gui_dmaas_test_template:
+  when: always
+  image: mayadataio/tools:gitlab-job-v6
+  stage: DIRECTOR-GUI-DMAAS
+  artifacts:
+    when: always
+    paths:
+      - /builds/oep/oep-e2e-rancher/gui-automation/results
+
+DIRECTOR-DMAAS-SC-CREATION:
+  extends: .gui_dmaas_test_template 
+  variables:
+    CLUSTER: cluster2
   script:
-    - chmod 755 ./stages/director-gui/gui-profile
-    - ./stages/director-gui/gui-profile
+    - chmod 755 ./stages/director-gui/create-cstor-sc
+    - ./stages/director-gui/create-cstor-sc
+
+TCID-DIR-DMAAS-SCHD-LOCAL-HP-AWS-BUCKET:
+  extends: .gui_dmaas_test_template
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-hostpath-aws
+    - ./stages/director-gui/gui-dmaas-hostpath-aws
+  variables:
+    GROUP: dmaasHostpathAws
+    THREADS: 5
+
+# TCID-DIR-DMAAS-SCHD-LOCAL-DEV-AWS-BUCKET:
+#   extends: .gui_dmaas_test_template
+#   script:
+#     - chmod 755 ./stages/director-gui/gui-dmaas-device-aws
+#     - ./stages/director-gui/gui-dmaas-device-aws
+#   variables:
+#     GROUP: dmaasDeviceAws
+#     THREADS: 5
+
+TCID-DIR-DMAAS-SCHD-JIVA-AWS-BUCKET:
+  extends: .gui_dmaas_test_template 
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-jiva-aws
+    - ./stages/director-gui/gui-dmaas-jiva-aws
+  variables:
+    GROUP: dmaasJivaAws
+    THREADS: 5
+
+TCID-DIR-DMAAS-SCHD-CSTOR-AWS-BUCKET:
+  extends: .gui_dmaas_test_template
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-cstor-aws
+    - ./stages/director-gui/gui-dmaas-cstor-aws
+  variables:
+    GROUP: dmaasCstorAws
+    THREADS: 5
+
+TCID-DIR-DMAAS-SCHD-LOCAL-HP-MINIO-BUCKET:
+  extends: .gui_dmaas_test_template
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-hostpath-minio
+    - ./stages/director-gui/gui-dmaas-hostpath-minio
+  variables:
+    GROUP: dmaasHostpathMinio
+    THREADS: 5
+
+# TCID-DIR-DMAAS-SCHD-LOCAL-DEV-MINIO-BUCKET:
+#   extends: .gui_dmaas_test_template
+#   script:
+#     - chmod 755 ./stages/director-gui/gui-dmaas-device-minio
+#     - ./stages/director-gui/gui-dmaas-device-minio
+#   variables:
+#     GROUP: dmaasDeviceMinio
+#     THREADS: 5
+
+TCID-DIR-DMAAS-SCHD-JIVA-MINIO-BUCKET:
+  extends: .gui_dmaas_test_template 
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-jiva-minio
+    - ./stages/director-gui/gui-dmaas-jiva-minio
+  variables:
+    GROUP: dmaasJivaMinio
+    THREADS: 5
+
+TCID-DIR-DMAAS-SCHD-CSTOR-MINIO-BUCKET:
+  extends: .gui_dmaas_test_template 
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-cstor-minio
+    - ./stages/director-gui/gui-dmaas-cstor-minio
+  variables:
+    GROUP: dmaasCstorMinio
+    THREADS: 5
+
+TCID-DIR-DMAAS-MINIO-DELETE:
+  extends: .gui_dmaas_test_template 
+  script:
+    - chmod 755 ./stages/director-gui/gui-dmaas-delete-minio
+    - ./stages/director-gui/gui-dmaas-delete-minio
+  variables:
+    GROUP: dmaasDelete
+    THREADS: 5
+
 
 ## OpenEBS Functional Tests
 
@@ -341,7 +486,7 @@ TCID-LOCALPV-HOSTPATH-CREATE:
 # OpenEBS CHAOS Tests JOBS
 
 .chaos_test_template:
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-CHAOS
   when: always
   dependencies:
@@ -408,7 +553,7 @@ selenium-grid-cleanup:
 
 e2e-metrics:
   when: always
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   stage: CLUSTER-CLEANUP
   dependencies:
     - cluster-create
@@ -419,7 +564,7 @@ e2e-metrics:
 ## Revert the cluster to previous snapshot
 cluster-cleanup:
   when: always
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
@@ -429,7 +574,7 @@ cluster-cleanup:
 
 cluster2-cleanup:
   when: always
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
@@ -439,7 +584,7 @@ cluster2-cleanup:
 
 cluster3-cleanup:
   when: always
-  image: harshshekhar15/gitlab-job:v2
+  image: mayadataio/tools:gitlab-job-v6
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
