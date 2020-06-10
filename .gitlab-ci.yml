@@ -152,6 +152,78 @@ TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-STRIPE:
     - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-STRIPE
     - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-STRIPE
 
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-MIRROR:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-MIRROR
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-MIRROR
+
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-STRIPE:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-STRIPE
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-STRIPE
+
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-MIRROR:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-MIRROR
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-MIRROR
+
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-NO-NDM:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-NO-NDM
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-NO-NDM
+
+TCID-DIR-OP-DELETE-CSPC-WITH-NO-VOLUME:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-CSPC-WITH-NO-VOLUME
+    - ./stages/openebs-install/TCID-DIR-OP-DELETE-CSPC-WITH-NO-VOLUME
+
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-RAIDZ:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-RAIDZ
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-RAIDZ
+
+TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-RAIDZ:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-RAIDZ
+    - ./stages/openebs-install/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-RAIDZ
+
+TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME:
+  image: harshshekhar15/gitlab-job:v2
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME
+    - ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME
+
 TCID-OPENEBS-POLICIES-CREATE:
   image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
