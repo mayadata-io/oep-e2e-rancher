@@ -89,9 +89,12 @@ cd gui-automation
 cp ~/.dmaas/cred.ini cred.ini
 
 bash scripts/dop-gui-stages/run-gui-tests.sh ${GROUP} ${GUID} ${URL} ${THREADS} eu-west-2
-
+STATUS=$(echo $?)
 cd ../..
 bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-cstor-aws-bucket jobphase:Completed
+if [ "$STATUS" != "0" ]; then
+exit 1;
+fi
 
 }
 

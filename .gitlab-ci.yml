@@ -252,67 +252,67 @@ TCID-GUI-AUTH:
   extends: .gui_test_template
   variables:
     GROUP: auth
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-AUTH-LOCAL-ADMIN:
   extends: .gui_test_template
   variables:
     GROUP: localAdminAuth
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-AUTH-LOCAL-USER:
   extends: .gui_test_template
   variables:
     GROUP: localUserAuth
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-AUTH-LOCAL-PERF:
   extends: .gui_test_template
   variables:
     GROUP: localPerfAuth
-    THREADS: 5
+    THREADS: 10
  
 TCID-GUI-CLUSTER:
   extends: .gui_test_template
   variables:
     GROUP: cluster
-    THREADS: 5
+    THREADS: 10
  
 TCID-GUI-DASHBOARD:
   extends: .gui_test_template
   variables:
     GROUP: dashboard
-    THREADS: 5
+    THREADS: 10
 
 TCID-GUI-PROFILE:
   extends: .gui_test_template
   variables:
     GROUP: profile
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-TEAMING-USER-INVITE:
   extends: .gui_test_template
   variables:
     GROUP: teamingUserInvite
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-TEAMING-USER-ROLE-UPDATE:
   extends: .gui_test_template
   variables:
     GROUP: teamingRoleUpdate
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-TEAMING-USER-ROLE-UPDATE-NEGATIVE:
   extends: .gui_test_template
   variables:
     GROUP: teamingRoleUpdateNegative
-    THREADS: 5
+    THREADS: 10
 
 TCID-DIR-GUI-OPENEBS-COMPONENTS-VERSION:
   extends: .gui_test_template
   variables:
     GROUP: openebs
-    THREADS: 5
+    THREADS: 10
 
 ## GUI DMAAS TESTS
 .gui_dmaas_test_template:
