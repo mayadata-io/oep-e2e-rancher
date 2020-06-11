@@ -5,6 +5,7 @@ pod() {
 ## Installing OpenEBS using DOP on cluster2
 echo -e "\n************************ Installing OpenEBS *******************************************\n"
 sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/openebs-install/TCID-DIR-OP-INSTALL-OPENEBS-DP-ON-SPECIFIC-NODE node '"'$CI_JOB_ID'"' '"'$GITHUB_TOKEN'"' '"'$CI_COMMIT_REF_NAME'"''
+}
 
 node() {
 
