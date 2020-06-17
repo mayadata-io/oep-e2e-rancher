@@ -46,6 +46,15 @@ echo -e "\n************************ Cloning oep-e2e-rancher repo ***************
 sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'git clone -b '$CI_COMMIT_REF_NAME' https://github.com/mayadata-io/oep-e2e-rancher.git'
 
 echo -e "\n************************ Applying e2e-crd *********************************************\n"
+crd_file="sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'ls oep-e2e-rancher/utils | grep e2e-crd.yml | wc -l'"
+file_count=$(eval $crd_file)
+echo -e "\nFile count: $file_count\n"
+while [ "$file_count" == "0" ]; do
+  echo "CRD yaml not present"
+  sleep 2
+  file_count=$(eval $crd_file)
+  echo -e "File count: $file_count\n"
+done
 sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port kubectl apply -f oep-e2e-rancher/utils/e2e-crd.yml
 
 else
