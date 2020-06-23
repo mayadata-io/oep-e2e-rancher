@@ -12,6 +12,10 @@ export KUBECONFIG=~/.kube/cluster2_config
 bash utils/pooling jobname:tcid-dir-op-cstor-pool-recommend-create-stripe
 bash utils/e2e-cr jobname:openebs-storage-policies jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 test_name=$(bash utils/generate_test_name testcase=cstor-storage-policies metadata="")
 echo $test_name
 

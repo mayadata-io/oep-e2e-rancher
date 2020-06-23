@@ -23,6 +23,10 @@ echo $present_dir
 bash utils/e2e-cr-new jobname:volume-replica-network-delay-jiva jobphase:Waiting init_time:"$current_time" jobid:"$job_id" pipelineid:"$pipeline_id" testcaseid:"$case_id" openebs_version:"$releaseTag"
 bash utils/e2e-cr-new jobname:volume-replica-network-delay-jiva jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

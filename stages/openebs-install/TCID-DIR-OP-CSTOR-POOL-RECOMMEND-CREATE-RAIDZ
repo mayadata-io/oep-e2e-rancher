@@ -33,6 +33,10 @@ bash utils/e2e-cr jobname:tcid-dir-op-cstor-pool-recommend-create-raidz jobphase
 
 export KUBECONFIG=~/.kube/cluster3_config
 
+##Cluster name
+cluster=cluster-3
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 kubectl create -f oep-e2e/litmus/director/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-RAIDZ/run_litmus_test.yml
 kubectl get pods -n litmus 
 

@@ -36,6 +36,10 @@ export KUBECONFIG=~/.kube/cluster3_config
 kubectl create -f oep-e2e/litmus/director/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-LIST-MIRROR/run_litmus_test.yml
 kubectl get pods -n litmus 
 
+##Cluster name
+cluster=cluster-3
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 test_name=list-recommendation-mirror
 
 echo -e "\nTest Name: $test_name\n"

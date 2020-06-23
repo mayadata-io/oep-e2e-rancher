@@ -23,6 +23,10 @@ echo $present_dir
 bash utils/e2e-cr-new jobname:csi-volume-resize-xfs jobphase:Waiting
 bash utils/e2e-cr-new jobname:csi-volume-resize-xfs jobphase:Running init_time:"$current_time" jobid:"$job_id" pipelineid:"$pipeline_id" testcaseid:"$case_id" openebs_version:"$releaseTag"
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

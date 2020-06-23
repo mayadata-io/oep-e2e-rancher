@@ -20,6 +20,10 @@ export KUBECONFIG=~/.kube/cluster2_config
 
 echo -e "\n[ Running client components check ]---------------\n"
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 kubectl create -f oep-e2e/litmus/director/cluster-connect-check/run_litmus_test.yml
 test_name=cluster-connect-check
 echo -e "\nTest Name: $test_name\n"

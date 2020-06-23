@@ -20,6 +20,10 @@ if [ "$wait" == "1" ]; then
 sleep 120
 fi
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\nCluster Status: Free"
 
 echo -e "\n************************ Checking the Cluster's Health ********************************\n"

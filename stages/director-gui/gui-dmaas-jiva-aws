@@ -19,6 +19,10 @@ export KUBECONFIG=~/.kube/cluster2_config
 bash utils/pooling jobname:tcid-dir-dmaas-minio-delete
 bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-jiva-aws-bucket jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 kubectl get ns
 
 PV_CLAIM_NAME="minio-pv-claim-jiva-aws"

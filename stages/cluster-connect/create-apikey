@@ -24,6 +24,10 @@ export KUBECONFIG=~/.kube/cluster2_config
 # Apply pre-requisites
 echo -e "\n[ Applying pre-requisites ]-------------------------------------------------\n"
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 # Setup litmus on cluster2
 echo -e "\n[ Setting up Litmus ]-----------------------------\n"
 kubectl apply -f oep-e2e/litmus/prerequisite/rbac.yaml

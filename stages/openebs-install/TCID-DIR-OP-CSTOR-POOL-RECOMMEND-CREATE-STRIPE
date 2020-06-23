@@ -26,6 +26,10 @@ export KUBECONFIG=~/.kube/cluster2_config
 bash utils/pooling jobname:tcid-dir-op-install-openebs
 bash utils/e2e-cr jobname:tcid-dir-op-cstor-pool-recommend-create-stripe jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 kubectl create -f oep-e2e/litmus/director/TCID-DIR-OP-CSTOR-POOL-RECOMMEND-CREATE-STRIPE/run_litmus_test.yml
 kubectl get pods -n litmus 
 

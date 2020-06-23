@@ -14,6 +14,10 @@ CI_PIPELINE_ID=$(echo $2)
 GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
 path=$(pwd)
 
+##Cluster name
+cluster=cluster-1
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n[ Cloning gui-automation repo ] ------------------------------------\n"
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
 cd gui-automation/scripts/grid

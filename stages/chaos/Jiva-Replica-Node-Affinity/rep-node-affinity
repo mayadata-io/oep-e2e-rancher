@@ -26,6 +26,10 @@ bash utils/e2e-cr-new jobname:jiva-replica-node-affinity jobphase:Running
 test_name=$(bash utils/generate_test_name testcase=busybox-provision-rep-node-affinity-jiva metadata="") 
 echo $test_name
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

@@ -26,6 +26,10 @@ C2_VM5_IP=${14}
 C2_VM6_IP=${15}
 C2_ESX_IP=${16}
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n[ Cloning Litmus repo ]------------------------------------------\n"
 git clone https://github.com/openebs/e2e-tests.git
 
