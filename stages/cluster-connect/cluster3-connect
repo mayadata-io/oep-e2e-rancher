@@ -18,6 +18,10 @@ echo "URL to access DOP: $URL"
 # Use cluster3 kube config
 export KUBECONFIG=~/.kube/cluster3_config
 
+##Cluster name
+cluster=cluster-3
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n[ Setting up litmus on the cluster ]---------------------------------------------------\n"
 # Setup litmus on the cluster
 kubectl apply -f oep-e2e/litmus/prerequisite/rbac.yaml

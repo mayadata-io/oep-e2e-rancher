@@ -26,6 +26,10 @@ bash utils/e2e-cr-new jobname:jiva-revision-counter jobphase:Running init_time:"
 # LitmusBook 1 #
 ################
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo "*******Deploying percona Application****"
 
 run_id="jiva-revision-counter";test_name=$(bash utils/generate_test_name testcase=percona-deployment metadata=${run_id})

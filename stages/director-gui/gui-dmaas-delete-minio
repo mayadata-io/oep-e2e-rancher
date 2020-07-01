@@ -32,6 +32,10 @@ THREADS=$(echo $5)
 bash utils/pooling jobname:tcid-dir-dmaas-schd-cstor-minio-bucket
 bash utils/e2e-cr jobname:tcid-dir-dmaas-minio-delete jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 #make empty directory
 mkdir -p selenium-auto
 cd selenium-auto

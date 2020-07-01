@@ -18,6 +18,10 @@ GUID=grid-${CI_PROJECT_NAME}-${CI_PIPELINE_ID}
 GROUP=$(echo $4)
 THREADS=$(echo $5)
 
+##Cluster name
+cluster=cluster-1
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n************************ Run GUI tests **********************************\n"
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
 cd gui-automation

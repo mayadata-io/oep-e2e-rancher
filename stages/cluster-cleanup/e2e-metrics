@@ -21,6 +21,10 @@ E2E_METRICS_RUN_ID=$(echo $2)
 # Create namespace for e2e-metric components
 kubectl create ns $COVERAGE_NAMESPACE
 
+##Cluster name
+cluster=cluster-1
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 # Clone oep-e2e repo and copy master-plan to oep-e2e-rancher repo
 git clone https://github.com/mayadata-io/oep-e2e.git
 cp oep-e2e/.master-plan.yml .master-plan.yml

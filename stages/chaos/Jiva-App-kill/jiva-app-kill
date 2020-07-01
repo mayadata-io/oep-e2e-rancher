@@ -29,6 +29,10 @@ echo "*******Deploying Busybox Application****"
 test_name=$(bash utils/generate_test_name testcase=busybox-provision-app-kill-jiva metadata="")
 echo $test_name
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

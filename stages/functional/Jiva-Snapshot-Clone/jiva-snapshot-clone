@@ -25,6 +25,10 @@ bash utils/e2e-cr-new jobname:jiva-snapshot-clone jobphase:Running init_time:"$c
 
 echo "*******Taking clone of BusyBox snapshot application**********"
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

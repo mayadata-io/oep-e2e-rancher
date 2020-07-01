@@ -26,6 +26,10 @@ C3_VM5_IP=${14}
 C3_VM6_IP=${15}
 C3_ESX_IP=${16}
 
+##Cluster name
+cluster=cluster-3
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 mkdir cluster3-cleanup
 cd cluster3-cleanup
 

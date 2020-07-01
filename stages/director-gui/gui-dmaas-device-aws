@@ -19,6 +19,9 @@ export KUBECONFIG=~/.kube/cluster2_config
 bash utils/pooling jobname:tcid-dir-dmaas-schd-cstor-aws-bucket
 bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-local-dev-aws-bucket jobphase:Running
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
 
 kubectl get ns
 

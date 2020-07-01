@@ -38,6 +38,10 @@ DOP_URL=$(kubectl get nodes -o wide --no-headers | awk {'print $6'} | tail -n 1)
 ##           Deploy DOP            ##
 #####################################
 
+##Cluster name
+cluster=cluster-1
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n[ Cloning director-charts-internal repo ]--------------------\n"
 
 git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/mayadata-io/director-charts-internal.git

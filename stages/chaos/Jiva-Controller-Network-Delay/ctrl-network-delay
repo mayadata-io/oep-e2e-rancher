@@ -24,6 +24,10 @@ bash utils/e2e-cr-new jobname:controller-network-delay-jiva jobphase:Running ini
 
 echo "*******Deploying Busybox Application****"
 
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 ################
 # LitmusBook 1 #
 ################

@@ -24,6 +24,10 @@ VM2_IP=$9
 VM3_IP=${10}
 VM4_IP=${11}
 
+##Cluster name
+cluster=cluster-1
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
 echo -e "\n[ Cloning Litmus repo ]------------------------------------------\n"
 git clone https://github.com/mayadata-io/litmus.git
 
