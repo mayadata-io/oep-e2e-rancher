@@ -465,6 +465,18 @@ TCID-CSTOR-VOLUME-XFS-RESIZE:
     - chmod 755 ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
     - ./stages/functional/cstor-xfs-volume-resize/csi-volume-resize-xfs
 
+TCID-CSTOR-CSI-VOLUME-REPLICA-SCALEUP:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/cstor-csi-volume-scaleup/cstor-csi-volume-scaleup
+    - ./stages/functional/cstor-csi-volume-scaleup/cstor-csi-volume-scaleup
+
+TCID-CSTOR-CSI-VOLUME-REPLICA-SCALEDOWN:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/cstor-csi-volume-scaledown/cstor-csi-volume-scaledown
+    - ./stages/functional/cstor-csi-volume-scaledown/cstor-csi-volume-scaledown
+
 TCID-LOCALPV-RANDOM-DEVICE-CREATE:
   extends: .func_test_template
   script:
