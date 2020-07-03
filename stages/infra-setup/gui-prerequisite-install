@@ -4,7 +4,7 @@ pod() {
 
 ## Deploying selenium--grid
 echo -e "\n************************ Deploying selenium-grid **************************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/selenium-grid-deploy node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"''
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/gui-prerequisite-install node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"''
 }
 
 node() {
@@ -20,13 +20,12 @@ echo -e "\nCLUSTER_NAME: $cluster\n"
 
 echo -e "\n[ Cloning gui-automation repo ] ------------------------------------\n"
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
-cd gui-automation/scripts/grid
-cat selenium-grid-config.yml
 
-echo -e "\n[ Creating selenium stack ] ----------------------------------------\n"
-bash configure-grid.sh ${GUID} eu-west-2
+cd gui-automation
+python3.7 -m pip install -r requirements.txt
+  
+cd ..
 
-cd ../../..
 }
 
 if [ "$1" == "node" ];then
