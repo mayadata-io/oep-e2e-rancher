@@ -4,7 +4,7 @@ pod() {
 
 ## Deploying selenium--grid
 echo -e "\n************************ Deploying selenium-grid **************************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/selenium-grid-deploy node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"''
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/gui-prerequisite-install node '"'$CI_PROJECT_NAME'"' '"'$CI_PIPELINE_ID'"''
 }
 
 node() {
