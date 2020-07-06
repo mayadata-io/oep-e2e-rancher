@@ -64,14 +64,19 @@ sleep 10
 echo -e "\n[ Rebooting the VM's ]-------------------------------------------\n"
 echo "Rebooting VM : $C3_VM1_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM1_IP 'reboot' > /dev/null 2>&1 &
+sleep 5
 echo "Rebooting VM : $C3_VM2_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM2_IP 'reboot' > /dev/null 2>&1 &
+sleep 5
 echo "Rebooting VM : $C3_VM3_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM3_IP 'reboot' > /dev/null 2>&1 &
+sleep 5
 echo "Rebooting VM : $C3_VM4_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM4_IP 'reboot' > /dev/null 2>&1 &
+sleep 5
 echo "Rebooting VM : $C3_VM5_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM5_IP 'reboot' > /dev/null 2>&1 &
+sleep 5
 echo "Rebooting VM : $C3_VM6_IP"
 sshpass -p $C3_VM_PASS ssh $VM_USER@$C3_VM6_IP 'reboot' > /dev/null 2>&1 &
 
