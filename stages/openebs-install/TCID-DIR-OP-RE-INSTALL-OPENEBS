@@ -30,6 +30,9 @@ export KUBECONFIG=~/.kube/cluster3_config
 cluster=cluster-3
 echo -e "\nCLUSTER_NAME: $cluster\n"
 
+echo -e "\nOPENEBS_VERSION: $OPENEBS_VERSION\n"
+sed -i "s/1.7.0/$OPENEBS_VERSION/g" oep-e2e/litmus/director/TCID-DIR-OP-RE-INSTALL-OPENEBS/run_litmus_test.yml
+
 kubectl create -f oep-e2e/litmus/director/TCID-DIR-OP-RE-INSTALL-OPENEBS/run_litmus_test.yml
 kubectl get pods -n litmus
 
