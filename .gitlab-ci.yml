@@ -495,6 +495,72 @@ TCID-LOCALPV-HOSTPATH-CREATE:
     - chmod 755 ./stages/functional/local-pv-hostpath/local-pv-hostpath
     - ./stages/functional/local-pv-hostpath/local-pv-hostpath
 
+TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY
+    - ./stages/functional/TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY
+
+TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY
+    - ./stages/functional/TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY
+
+TCID-ZFSPV-PROPERTY-MODIFY-ZFS:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-ZFS
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-ZFS
+
+TCID-ZFSPV-PROPERTY-MODIFY-EXT4:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-EXT4
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-EXT4
+
+TCID-ZFSPV-PROPERTY-MODIFY-XFS:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-XFS
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-XFS
+
+TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE
+
+TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE
+
+TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE
+
+TCID-ZFS-VOL-RESIZE-ZFS:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-ZFS
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-ZFS
+
+TCID-ZFS-VOL-RESIZE-EXT4:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-EXT4
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-EXT4
+
+TCID-ZFS-VOL-RESIZE-XFS:
+  extends: .func_test_template
+  script:
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-XFS
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-XFS
+
 # OpenEBS CHAOS Tests JOBS
 
 .chaos_test_template:
