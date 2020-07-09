@@ -498,68 +498,68 @@ TCID-LOCALPV-HOSTPATH-CREATE:
 TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFS-LocalPV-provisioner/ZFS-LocalPV-provisioner
-    - ./stages/functional/ZFS-LocalPV-provisioner/ZFS-LocalPV-provisioner
+    - chmod 755 ./stages/functional/TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY
+    - ./stages/functional/TCID-ZFS-LOCALPV-PROVISIONER-DEPLOY
 
 TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFSPV-custom-topology/ZFSPV-custom-topology
-    - ./stages/functional/ZFSPV-custom-topology/ZFSPV-custom-topology
+    - chmod 755 ./stages/functional/TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY
+    - ./stages/functional/TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY
 
 TCID-ZFSPV-PROPERTY-MODIFY-ZFS:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZV-property-modify/ZV-property-modify
-    - ./stages/functional/ZV-property-modify/ZV-property-modify
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-ZFS
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-ZFS
 
 TCID-ZFSPV-PROPERTY-MODIFY-EXT4:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZV-property-modify-ext4/ZV-property-modify-ext4
-    - ./stages/functional/ZV-property-modify-ext4/ZV-property-modify-ext4
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-EXT4
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-EXT4
 
 TCID-ZFSPV-PROPERTY-MODIFY-XFS:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZV-property-modify-xfs/ZV-property-modify-xfs
-    - ./stages/functional/ZV-property-modify-xfs/ZV-property-modify-xfs
+    - chmod 755 ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-XFS
+    - ./stages/functional/TCID-ZFSPV-PROPERTY-MODIFY-XFS
 
 TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFSPV-snapshot-clone/ZFSPV-snapshot-clone
-    - ./stages/functional/ZFSPV-snapshot-clone/ZFSPV-snapshot-clone
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-ZFS-CREATE
 
 TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFSPV-snapshot-clone-ext4/ZFSPV-snapshot-clone-ext4
-    - ./stages/functional/ZFSPV-snapshot-clone-ext4/ZFSPV-snapshot-clone-ext4
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE
 
 TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFSPV-snapshot-clone-xfs/ZFSPV-snapshot-clone-xfs
-    - ./stages/functional/ZFSPV-snapshot-clone-xfs/ZFSPV-snapshot-clone-xfs
+    - chmod 755 ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE
+    - ./stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-XFS-CREATE
 
 TCID-ZFS-VOL-RESIZE-ZFS:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFS-vol-resize/ZFS-vol-resize
-    - ./stages/functional/ZFS-vol-resize/ZFS-vol-resize
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-ZFS
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-ZFS
 
 TCID-ZFS-VOL-RESIZE-EXT4:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFS-vol-resize-ext4/ZFS-vol-resize-ext4
-    - ./stages/functional/ZFS-vol-resize-ext4/ZFS-vol-resize-ext4
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-EXT4
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-EXT4
 
 TCID-ZFS-VOL-RESIZE-XFS:
   extends: .func_test_template
   script:
-    - chmod 755 ./stages/functional/ZFS-vol-resize-xfs/ZFS-vol-resize-xfs
-    - ./stages/functional/ZFS-vol-resize-xfs/ZFS-vol-resize-xfs
+    - chmod 755 ./stages/functional/TCID-ZFS-VOL-RESIZE-XFS
+    - ./stages/functional/TCID-ZFS-VOL-RESIZE-XFS
 
 # OpenEBS CHAOS Tests JOBS
 

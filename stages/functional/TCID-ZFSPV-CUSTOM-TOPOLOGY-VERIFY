@@ -2,7 +2,7 @@
 
 ## SSH into the cluster to run the kubernetes jobs for the experiments
 connect_cluster() {
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port -o LogLevel=ERROR 'cd oep-e2e-rancher && bash stages/functional/ZFSPV-custom-topology/ZFSPV-custom-topology run_job '"'$CI_JOB_ID'"'' '"'$CI_PIPELINE_ID'"' '"'$CI_COMMIT_SHA'"'
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port -o LogLevel=ERROR 'cd oep-e2e-rancher && bash stages/functional/TCID-ZFSPV-CUSTOM-TOPOLOGY-VERIFY run_job '"'$CI_JOB_ID'"'' '"'$CI_PIPELINE_ID'"' '"'$CI_COMMIT_SHA'"'
 
 }
 

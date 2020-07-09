@@ -10,7 +10,7 @@ zfspv_snapshot_ext4_deprovision_rc_val=1
 
 ## SSH into the cluster to run the kubernetes jobs for the experiments
 connect_cluster() {
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port -o LogLevel=ERROR 'cd oep-e2e-rancher && bash stages/functional/ZFSPV-snapshot-clone-ext4/ZFSPV-snapshot-clone-ext4 run_job '"'$CI_JOB_ID'"'' '"'$CI_PIPELINE_ID'"' '"'$CI_COMMIT_SHA'"'
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port -o LogLevel=ERROR 'cd oep-e2e-rancher && bash stages/functional/TCID-ZFSPV-SNAPSHOT-CLONE-EXT4-CREATE run_job '"'$CI_JOB_ID'"'' '"'$CI_PIPELINE_ID'"' '"'$CI_COMMIT_SHA'"'
 
 }
 
