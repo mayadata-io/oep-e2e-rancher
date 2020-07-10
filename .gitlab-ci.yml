@@ -314,6 +314,16 @@ TCID-DIR-GUI-OPENEBS-COMPONENTS-VERSION:
     GROUP: openebs
     THREADS: 10
 
+## Apply patch 
+patch-restic-privilege:
+  image: mayadataio/tools:gitlab-job-v6
+  stage: DIRECTOR-GUI
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/director-gui/patch-restic-privilege
+    - ./stages/director-gui/patch-restic-privilege
+
 ## GUI DMAAS TESTS
 .gui_dmaas_test_template:
   when: always
