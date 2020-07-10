@@ -6,7 +6,7 @@ pod() {
 
 ## Installing OpenEBS using DOP on cluster2
 echo -e "\n************************ Installing OpenEBS *******************************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/director-gui/create-cstor-sc node'
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash /stages/director-gui/patch-restic-privilege node'
 }
 
 node() {
