@@ -1,0 +1,71 @@
+
+#!/bin/bash
+
+
+pod() {
+
+## Installing OpenEBS using DOP on cluster2
+echo -e "\n************************ Installing OpenEBS *******************************************\n"
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash /stages/director-gui/patch-restic-privilege node'
+}
+
+node() {
+path=$(pwd)
+export KUBECONFIG=~/.kube/cluster2_config
+
+
+##Cluster name
+cluster=cluster-2
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
+
+# Fetch velero image name
+VELERO=`kubectl get daemonset restic -n maya-system -oyaml | grep image: | cut -d':' -f2- | awk '{$1=$1};1'`
+
+# remove patch.yml file if already exist
+rm -rf patch.yml
+
+# Download patch file
+wget https://raw.githubusercontent.com/openebs/e2e-tests/master/experiments/functional/backup_and_restore/patch.yml
+
+#update the velero image
+sed 's|"image": "gcr.io/heptio-images/velero:v1.1.0"|"image": '\"${VELERO}\"'|' -i patch.yml
+
+cat patch.yml
+
+# Apply patch 
+kubectl patch ds restic -n maya-system --patch "$(cat patch.yml)"
+
+
+# Patch cluster 3
+cluster=cluster-3
+echo -e "\nCLUSTER_NAME: $cluster\n"
+
+export KUBECONFIG=~/.kube/cluster3_config
+
+# Fetch velero image name
+VELERO=`kubectl get daemonset restic -n maya-system -oyaml | grep image: | cut -d':' -f2- | awk '{$1=$1};1'`
+
+# remove patch.yml file if already exist
+rm -rf patch.yml
+
+# Download patch file
+wget https://raw.githubusercontent.com/openebs/e2e-tests/master/experiments/functional/backup_and_restore/patch.yml
+
+#update the velero image
+sed 's|"image": "gcr.io/heptio-images/velero:v1.1.0"|"image": '\"${VELERO}\"'|' -i patch.yml
+
+cat patch.yml
+
+# Apply patch 
+kubectl patch ds restic -n maya-system --patch "$(cat patch.yml)"
+
+
+
+}
+
+if [ "$1" == "node" ];then
+  node $2 $3 $4
+else
+  pod
+fi
