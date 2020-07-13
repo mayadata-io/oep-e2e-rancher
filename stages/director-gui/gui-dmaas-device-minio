@@ -40,9 +40,6 @@ kubectl create ns ${NAMESPACE}
 mkdir -p $path/device-minio
 cp -R $path/stages/director-gui/template/minio-manifest $path/device-minio
 
-# kubectl get bd -n openebs | awk '{ if($4 == "Unclaimed"){print $2};}'
-# NODE_SELECTOR=`kubectl get bd -n openebs | awk '{ if($4 == "Unclaimed"){print $2};}' | awk 'NR==1'`
-# echo $NODE_SELECTOR
 
 # Add pv claim name, namespace and storage class name in minio-pvc.yaml
 sed 's|name: minio-pv-claim|name: '${PV_CLAIM_NAME}'|' -i $path/device-minio/minio-manifest/minio-pvc.yaml
@@ -54,7 +51,7 @@ cat $path/device-minio/minio-manifest/minio-pvc.yaml
 # Add pv claim name, namespace and node selector in minio-official.yaml
 sed 's|namespace: test|namespace: '${NAMESPACE}'|' -i $path/device-minio/minio-manifest/minio-official.yaml
 sed 's|claimName: minio-pv-claim|claimName: '${PV_CLAIM_NAME}'|' -i $path/device-minio/minio-manifest/minio-official.yaml
-# sed 's|kubernetes.io/os: linux|kubernetes.io/hostname: '${NODE_SELECTOR}'|' -i $path/device-minio/minio-manifest/minio-official.yaml
+
 cat $path/device-minio/minio-manifest/minio-official.yaml
 
 # Add node port and namespace in minio-svc.yaml
@@ -83,10 +80,6 @@ THREADS=$(echo $5)
 AWS_CREDS=$(echo $6)
 MINIO_CREDS=$(echo $7)
 
-#copy aws and minio cred
-# mkdir -p ~/.dmaas
-# echo "$AWS_CREDS" > ~/.dmaas/aws_cred
-# echo "$MINIO_CREDS" > ~/.dmaas/minio_cred
 
 #make empty directory
 mkdir -p selenium-auto
@@ -96,8 +89,6 @@ cd selenium-auto
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
 cd gui-automation
 
-#creating credential file
-# cat ~/.dmaas/aws_cred ~/.dmaas/minio_cred >> cred.ini
 
 # Copy credential file
 cp ~/.dmaas/cred.ini cred.ini
@@ -105,7 +96,7 @@ cp ~/.dmaas/cred.ini cred.ini
 bash scripts/dop-gui-stages/run-gui-tests.sh ${GROUP} ${GUID} ${URL} ${THREADS} eu-west-2
 STATUS=$(echo $?)
 cd ../..
-bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-local-dev-minio-buckeT jobphase:Completed
+bash utils/e2e-cr jobname:tcid-dir-dmaas-schd-local-dev-minio-bucket jobphase:Completed
 if [ "$STATUS" != "0" ]; then
 exit 1;
 fi
