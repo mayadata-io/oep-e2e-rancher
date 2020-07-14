@@ -224,6 +224,33 @@ TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME:
     - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME
     - ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-NO-VOLUME
 
+TCID-DIR-OP-DELETE-CSPC-WITH-VOLUME:
+  image: mayadataio/tools:gitlab-job-v5
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-CSPC-WITH-VOLUME
+    - ./stages/openebs-install/TCID-DIR-OP-DELETE-CSPC-WITH-VOLUME
+
+TCID-DIR-OP-DELETE-EXTERNAL-CSPC-WITH-NO-VOLUME:
+  image: mayadataio/tools:gitlab-job-v5
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-EXTERNAL-CSPC-WITH-NO-VOLUME
+    - ./stages/openebs-install/TCID-DIR-OP-DELETE-EXTERNAL-CSPC-WITH-NO-VOLUME
+
+TCID-DIR-OP-DELETE-SPC-WITH-VOLUME:
+  image: mayadataio/tools:gitlab-job-v5
+  stage: OPENEBS-SETUP
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-VOLUME
+    - ./stages/openebs-install/TCID-DIR-OP-DELETE-SPC-WITH-VOLUME
+
 TCID-OPENEBS-POLICIES-CREATE:
   image: mayadataio/tools:gitlab-job-v6
   stage: OPENEBS-SETUP
