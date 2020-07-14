@@ -58,7 +58,7 @@ helm repo update
 helm repo add kubera https://charts.mayadata.io/
 
 # Apply helm chart
-helm install --name kubera kubera/kubera-charts --set server.url=$DOP_URL --set server.release=$RELEASE --set server.maxMemberCountInOneProject=100
+helm install --name kubera kubera/kubera-charts --set server.url=$DOP_URL --set server.release=$RELEASE --set server.maxMemberCountInOneProject=100 --set nginx-ingress.enabled=false
 
 # Pass these values as well if need to run ingress as deployment:  --set nginx-ingress.controller.kind=Deployment --set nginx-ingress.controller.service.enabled=true
 
