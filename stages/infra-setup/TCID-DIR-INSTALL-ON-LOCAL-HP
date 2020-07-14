@@ -68,25 +68,17 @@ helm get values kubera > values.yaml
 echo -e "Changed values in values.yaml\n"
 cat values.yaml
 
-# Dump Director On-Prem pods
+# Dump Kubera On-Prem and OpenEBS pods
 echo -e "\n[ Dumping Director On-Prem components ]\n"
 kubectl get pod
-
-# Dump Openebs pods
-echo -e "\n[ Dumping Openebs components ]\n"
-kubectl get pod -n openebs
 
 # Wait for the components to show up
 echo -e "\n[ Waiting for the DOP components to show up] ----------------\n"
 sleep 600
 
-# Dump Director On-Prem pods
+# Dump Kubera On-Prem and OpenEBS pods
 echo -e "\n[ Dumping Director On-Prem components ]\n"
 kubectl get pod
-
-# Dump Openebs pods
-echo -e "\n[ Dumping Openebs components ]\n"
-kubectl get pod -n openebs
 
 echo -e "\n************************ Installing litmus pre-requisites *****************************\n"
 
