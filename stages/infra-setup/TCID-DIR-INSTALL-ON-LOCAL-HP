@@ -4,7 +4,7 @@ pod() {
 
 ## Cloning oep-e2e-rancher repo
 echo -e "\n************************ Deploying Director On-Prem ***********************************\n"
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/TCID-DIR-INSTALL-ON-LOCAL-HP node '"'$GITHUB_USERNAME'"' '"'$GITHUB_PASSWORD'"' '"'$RELEASE_USERNAME'"' '"'$RELEASE_PASSWORD'"' '"'$RELEASE'"' '"'$CI_JOB_ID'"' '"'$GITHUB_TOKEN'"' '"'$CI_COMMIT_REF_NAME'"''
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $user@$ip -p $port 'cd oep-e2e-rancher && bash stages/infra-setup/TCID-DIR-INSTALL-ON-LOCAL-HP node '"'$GITHUB_USERNAME'"' '"'$GITHUB_PASSWORD'"' '"'$RELEASE_USERNAME'"' '"'$RELEASE_PASSWORD'"' '"'$RELEASE'"' '"'$CI_JOB_ID'"' '"'$GITHUB_TOKEN'"' '"'$CI_COMMIT_REF_NAME'"' '"'$WAIT'"''
 }
 
 node() {
@@ -17,6 +17,7 @@ RELEASE=$5
 CI_JOB_ID=$6
 GITHUB_TOKEN=$7
 CI_COMMIT_REF_NAME=$8
+WAIT=$9
 
 job_id=$(echo $CI_JOB_ID)
 gittoken=$(echo "$GITHUB_TOKEN")
@@ -73,8 +74,8 @@ echo -e "\n[ Dumping Director On-Prem components ]\n"
 kubectl get pod
 
 # Wait for the components to show up
-echo -e "\n[ Waiting for the DOP components to show up] ----------------\n"
-sleep 600
+echo -e "\n[ Waiting $WAIT secs for the DOP components to show up] ----------------\n"
+sleep $WAIT
 
 # Dump Kubera On-Prem and OpenEBS pods
 echo -e "\n[ Dumping Director On-Prem components ]\n"
@@ -115,7 +116,7 @@ fi
 }
 
 if [ "$1" == "node" ];then
-  node $2 $3 $4 $5 $6 $7 $8 $9
+  node $2 $3 $4 $5 $6 $7 $8 $9 ${10}
 else
   pod
 fi
