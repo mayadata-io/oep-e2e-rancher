@@ -13,7 +13,6 @@ pipeline_id=$(echo $2) # Gitlab pipeline id obtained from gitlab env ($CI_PIPELI
 commit_id=$(echo $3) #Gitlab commit id Obtained fron gilab env ($CI_COMMIT_SHA).
 releaseTag=$(echo $4)
 source ~/.profile
-case_id=MCDE 
 
 time="date"
 current_time=$(eval $time)
@@ -128,7 +127,7 @@ fi
 
 # Performing Application Pod Chaos
 
-test_name=$(bash utils/generate_test_name testcase=application-pod-failure metadata="")
+run_id="cstor-csi";test_name=$(bash utils/generate_test_name testcase=application-pod-failure metadata=${run_id})
 echo $test_name
 
 cd e2e-tests
@@ -147,6 +146,11 @@ sed -i '/parameters.yml: |/a \
     blocksize: 4k\
     blockcount: 1024\
     testfile: appkill
+' appkill.yml
+
+sed -i '/command:/i \
+          - name: RUN_ID\
+            value: '"$run_id"'\
 ' appkill.yml
 
 echo "Running the litmus test for Busybox Deployment application pod kill.."
