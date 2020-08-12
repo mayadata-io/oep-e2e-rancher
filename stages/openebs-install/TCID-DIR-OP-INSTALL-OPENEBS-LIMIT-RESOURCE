@@ -30,6 +30,10 @@ export KUBECONFIG=~/.kube/cluster3_config
 cluster=cluster-3
 echo -e "\nCLUSTER_NAME: $cluster\n"
 
+platform=RANCHER
+sed -i "s/platform_name/$platform/g" oep-e2e/litmus/director/TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE/run_litmus_test.yml
+cat oep-e2e/litmus/director/TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE/run_litmus_test.yml
+
 kubectl create -f oep-e2e/litmus/director/TCID-DIR-OP-INSTALL-OPENEBS-LIMIT-RESOURCE/run_litmus_test.yml
 kubectl get pods -n litmus
 
