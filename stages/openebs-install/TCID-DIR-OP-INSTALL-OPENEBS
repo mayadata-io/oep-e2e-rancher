@@ -24,7 +24,7 @@ export KUBECONFIG=~/.kube/cluster2_config
 bash utils/pooling jobname:tcid-dir-op-install-openebs-limit-resource
 bash utils/e2e-cr jobname:tcid-dir-op-install-openebs jobphase:Running
 
-export KUBECONFIG=~/.kube/config3_config
+export KUBECONFIG=~/.kube/cluster3_config
 
 ##Cluster name
 cluster=cluster-2
