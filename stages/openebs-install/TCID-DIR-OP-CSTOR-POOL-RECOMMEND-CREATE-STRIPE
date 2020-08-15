@@ -23,7 +23,7 @@ test_desc="Verify creation of stripe cstor pool cluster"
 # Use cluster2 kube config
 export KUBECONFIG=~/.kube/cluster2_config
 
-bash utils/pooling jobname:tcid-dir-op-install-openebs
+bash utils/pooling jobname:tcid-dir-op-install-openebs-limit-resource
 bash utils/e2e-cr jobname:tcid-dir-op-cstor-pool-recommend-create-stripe jobphase:Running
 
 ##Cluster name

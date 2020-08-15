@@ -21,10 +21,10 @@ test_desc="Install openebs using director"
 
 export KUBECONFIG=~/.kube/cluster2_config
 
-bash utils/e2e-cr jobname:tcid-dir-op-install-openebs jobphase:Waiting
-bash utils/e2e-cr jobname:tcid-dir-op-cstor-pool-recommend-create-stripe jobphase:Waiting
-bash utils/e2e-cr jobname:openebs-storage-policies jobphase:Waiting
+bash utils/pooling jobname:tcid-dir-op-install-openebs-limit-resource
 bash utils/e2e-cr jobname:tcid-dir-op-install-openebs jobphase:Running
+
+export KUBECONFIG=~/.kube/cluster3_config
 
 ##Cluster name
 cluster=cluster-2
@@ -64,11 +64,11 @@ fi
 
 if [ "$testResult" != Pass ]
 then
-  #export KUBECONFIG=~/.kube/config
+  export KUBECONFIG=~/.kube/cluster2_config
   bash utils/e2e-cr jobname:tcid-dir-op-install-openebs jobphase:Completed
   exit 1;
 else
-  #export KUBECONFIG=~/.kube/config 
+  export KUBECONFIG=~/.kube/cluster2_config
   bash utils/e2e-cr jobname:tcid-dir-op-install-openebs jobphase:Completed
 fi 
 
