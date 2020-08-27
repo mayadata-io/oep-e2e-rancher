@@ -77,7 +77,7 @@ then
   ## Sed command to replace the third line next to "nginx-ingress:"
   sed '/nginx-ingress:/!b;n;n;n;c\  enabled: false' -i ./values.yaml
   echo -e "\nInstalling Kubera using kubera-charts/values.yaml"
-  helm install --name kubera -f values.yaml
+  helm install --name kubera .
   cd ..
 
 else
