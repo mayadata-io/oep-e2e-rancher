@@ -67,6 +67,8 @@ then
   cd kubera-charts
 
   echo -e "\nUpdating values in kubera-charts/values.yaml\n"
+  # Update release version
+  sed 's|release: .*|release: '$RELEASE'|' -i ./values.yaml
   # Update URL for accessing Kubera
   sed 's|url: .*|url: '$DOP_URL'|' -i ./values.yaml
   # Update max member count in a project to 100
