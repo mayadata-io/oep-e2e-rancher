@@ -62,7 +62,7 @@ then
 
   # Deploy Kubera from kubera-charts repo
   echo -e "\nDeploying Kubera using kubera-charts repo\n"
-  echo -e "\nCloning $KUBERA_BRANCH of kubera-charts repo\n"
+  echo -e "\nCloning $KUBERA_BRANCH branch of kubera-charts repo\n"
   git clone -b $KUBERA_BRANCH https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/mayadata-io/kubera-charts.git
   cd kubera-charts
 
