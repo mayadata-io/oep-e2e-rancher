@@ -47,7 +47,7 @@ cluster=cluster-1
 echo -e "\nCLUSTER_NAME: $cluster\n"
 
 echo -e "\n[ Print DOP release version ]-------------------------------------\n"
-echo -e "Release Version: $RELEASE\n"
+echo -e "release: $RELEASE\n"
 
 # Create secret having maya-init repo access
 kubectl create secret docker-registry directoronprem-registry-secret --docker-server=registry.mayadata.io --docker-username=$RELEASE_USERNAME --docker-password=$RELEASE_PASSWORD
