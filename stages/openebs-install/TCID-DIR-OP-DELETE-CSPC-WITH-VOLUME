@@ -72,9 +72,9 @@ echo -e "\nTest Result: $testResult\n"
 
 ## Cleaning up the resources created for the test
 kubectl delete -f $path/stages/openebs-install/template/minio-manifest/
+kubectl delete cstorclusterconfig rec-create-raidz -n openebs
 kubectl delete ns delete-cspc
 kubectl delete -f $path/stages/openebs-install/template/cstor-sc.yml
-kubectl delete cstorclusterconfig rec-create-raidz -n openebs
 
 echo -e "\nBranch: $branch_name\n"
 if [[ $branch_name == "oep-release" ]]; then
